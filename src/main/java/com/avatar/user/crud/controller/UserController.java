@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
+//@ExceptionHandler(Throwable)
 public class UserController {
 
     @Autowired
@@ -24,11 +25,26 @@ public class UserController {
         return userService.allUsers();
     }
 
-    // Read a User
+    // Read a User using USER-ID
     @GetMapping("/users/{id}")
     @ResponseBody
-    public User getUser(@PathVariable String id) {
-        return userService.getUser(id);
+    public ResponseEntity<?> getUser(@PathVariable String id) {
+        User user = userService.getUser(id);
+        if(user == null){
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    // Read a User using USER-ID & Last Name
+    @GetMapping("/users/{id}/{lastName}")
+    @ResponseBody
+    public ResponseEntity<?> getUser(@PathVariable String id, @PathVariable String lastName){
+        User user = userService.getUser(id, lastName);
+        if(user == null){
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     // Add a User

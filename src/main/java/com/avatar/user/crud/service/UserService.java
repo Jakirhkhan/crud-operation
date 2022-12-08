@@ -27,7 +27,18 @@ public class UserService {
     }
 
     public User getUser(String id){
-        User user = users.stream().filter(u-> u.getId().equals(id)).findFirst().get();
+        User user = users.stream()
+                .filter(u-> u.getId().equals(id))
+                .findFirst().get();
+        return user;
+    }
+
+    public User getUser(String id, String lastName){
+        User user = users.stream()
+                .filter(u-> u.getId().equals(id))
+                .filter(u->u.getLastName().equals(lastName))
+                .findFirst().get();
+        //System.out.println(user);
         return user;
     }
 
