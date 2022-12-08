@@ -9,9 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/v1")
+@ControllerAdvice
 //@ExceptionHandler(Throwable)
 public class UserController {
 
@@ -29,11 +31,12 @@ public class UserController {
     @GetMapping("/users/{id}")
     @ResponseBody
     public ResponseEntity<?> getUser(@PathVariable String id) {
-        User user = userService.getUser(id);
-        if(user == null){
+        try{
+            return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
+        }
+        catch (NoSuchElementException exception){
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     // Read a User using USER-ID & Last Name
