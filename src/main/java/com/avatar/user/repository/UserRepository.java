@@ -1,4 +1,4 @@
-package com.avatar.user.crud.repository;
+package com.avatar.user.repository;
 
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,7 @@
-package com.avatar.user.crud.controller;
+package com.avatar.user.controller;
 
-import com.avatar.user.crud.entity.User;
-import com.avatar.user.crud.repository.UserRepository;
-import com.avatar.user.crud.service.UserService;
+import com.avatar.user.entity.User;
+import com.avatar.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

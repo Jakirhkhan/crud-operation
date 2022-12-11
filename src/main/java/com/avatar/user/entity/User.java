@@ -1,4 +1,4 @@
-package com.avatar.user.crud.entity;
+package com.avatar.user.entity;
 
 public class User {
 

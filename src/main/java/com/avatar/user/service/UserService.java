@@ -1,6 +1,6 @@
-package com.avatar.user.crud.service;
+package com.avatar.user.service;
 
-import com.avatar.user.crud.entity.User;
+import com.avatar.user.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
